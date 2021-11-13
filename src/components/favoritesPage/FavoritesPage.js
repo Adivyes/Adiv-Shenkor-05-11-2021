@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function FavoritesPage() {
@@ -26,7 +26,7 @@ useEffect( () => {
     favorCitesToDisplay()
 }, [])
 console.log(citiesToShow);
-    return (!citiesToShow.length == 0?
+    return (!citiesToShow.length === 0?
 
         <div className="app">
         <main>

@@ -1,7 +1,7 @@
 
 
 
-const apiKey = "EkhRH8zK5AMGaA7d5hS2at00T2igAOwW";
+const apiKey = "NvQYE49lFTKd5AcRJKnlkZunLqgGbHcH";
 
 const getWeatherData = async (id) => {
     const cityApi = 'http://dataservice.accuweather.com/currentconditions/v1/';

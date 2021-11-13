@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom'
 import React, { useState, useEffect } from 'react';
 
 import { useNavigate } from "react-router-dom";
@@ -45,6 +44,7 @@ export default function WeatherPage() {
     }
 
     const submitRequest = (evt) => {
+        
         evt.preventDefault();
         getCityInfoAction(city)
         // console.log(dataSelector.cityInfo);
@@ -58,7 +58,7 @@ export default function WeatherPage() {
     }
 
     const goToFavoritePage = () =>  {
-        if (list.length == 0 && localStorData.length != 0 && localStorData.length > list.length) {
+        if (list.length === 0 && localStorData.length !== 0 && localStorData.length > list.length) {
             localStorage.setItem("favorCities", JSON.stringify(localStorData))  
         }else if(list.length > 0){
             localStorage.setItem("favorCities", JSON.stringify(list)) 
@@ -73,10 +73,15 @@ export default function WeatherPage() {
             temperature: dataSelector.weatherInfo?.Temperature.Metric.Value, 
             weatherCond: dataSelector.weatherInfo?.WeatherText 
         }
+        console.log("datat from localstoage", localStorData);
 
         //add one more condition to this function to decline same city name 
-        updateList((oldState) => [...oldState, newFavoriteCity]);
-        
+        // updateList((oldState) => [...oldState, newFavoriteCity]);
+        if (localStorData?.length > 0) {
+            updateList((oldState) => [...oldState, newFavoriteCity, ...localStorData]);
+        }else{
+            updateList((oldState) => [...oldState, newFavoriteCity]);
+        }
         for (let i = 0; i < list.length; i++) {
             if(list[i].cityName === dataSelector.cityInfo?.EnglishName){
                 list.splice(i, 1);
@@ -87,7 +92,7 @@ export default function WeatherPage() {
             list.shift();
            
         }  
-        localStorage.setItem("favorCities", JSON.stringify(list)) 
+        // localStorage.setItem("favorCities", JSON.stringify(list)) 
     }
 
     useEffect(() => {
@@ -99,7 +104,6 @@ export default function WeatherPage() {
         }
     }, [dataSelector.cityInfo?.Key])
 
-    
 
 
     return (dataSelector.cityInfo?.Key ?
@@ -132,7 +136,7 @@ export default function WeatherPage() {
                     <div className="temp">{dataSelector.weatherInfo?.Temperature.Metric.Value}°c</div>
 
                     <div className="tempIcon">
-                        <img src={`../images/${dataSelector.weatherInfo?.WeatherIcon}.svg`}></img>
+                        <img src={`../images/${dataSelector.weatherInfo?.WeatherIcon}.svg`} alt="weatherImg"></img>
                     </div>
 
                     <div className="weather">{dataSelector.weatherInfo?.WeatherText}</div>
@@ -141,13 +145,13 @@ export default function WeatherPage() {
                         {dataSelector.fiveDaysInfo?.length > 0 ? dataSelector.fiveDaysInfo.map((day, index) => (
                             <div className="oneDayForecast" key={index}>
                                 <h2>{fiveDaysHandler(day.Date)}</h2>
-                                <img src={`../images/${dataSelector.fiveDaysInfo[index].Day.Icon}.svg`}></img>
+                                <img src={`../images/${dataSelector.fiveDaysInfo[index].Day.Icon}.svg`} alt="WeatherImg"></img>
                                 <h3>MAX: {day.Temperature.Maximum.Value}°c MIN: {day.Temperature.Minimum.Value}°c</h3>
                             </div>
                         )) : days.map((day, index) => (
                             <div className="oneDayForecast" key={index}>
                                 <h2>{day}</h2>
-                                <img src="images/4.svg" alt="WeatherText" />
+                                <img src="images/4.svg" alt="WeatherImg2" />
                                 <h3>MAX: 30°c MIN: 15°c</h3>
                             </div>
                         ))}
