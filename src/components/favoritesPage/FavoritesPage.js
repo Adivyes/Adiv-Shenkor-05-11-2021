@@ -26,7 +26,7 @@ useEffect( () => {
     favorCitesToDisplay()
 }, [])
 console.log(citiesToShow);
-    return (!citiesToShow.length === 0?
+    return (citiesToShow.length > 0?
 
         <div className="app">
         <main>
