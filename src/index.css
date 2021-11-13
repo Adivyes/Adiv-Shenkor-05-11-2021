@@ -27,9 +27,37 @@ main {
   padding: 25px;
 }
 
+main .favoriteBtnsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+margin-bottom: 20px;
+
+
+}
+
+main .singlFavoriteBtn{
+ 
+  background-color: rgba(255, 255, 255, 0.274);
+  border-radius: 16px;
+  padding: 5px 5px;
+
+  color: #FFF;
+  font-size: 25px;
+  font-weight: 800;
+
+  /* text-shadow: 3px 6px rgba(50, 50, 70, 0.5); */
+  text-align: center;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+main .singlFavoriteBtn:hover {
+  cursor: pointer;
+}
+
 .search-box {
   width: 100%;
-  margin: 0 0 75px;
+  margin: 0 0 30px;
 }
 
 .search-box .search-bar {
@@ -70,8 +98,8 @@ main {
 
 .location-box .date {
   color: #FFF;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 25px;
+  font-weight: 600;
   font-style: italic;
   text-align: center;
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
@@ -115,6 +143,34 @@ main {
   font-weight: 900;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
+.weather-box .fiveFavoriteCities{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 10vw 0 0 0;
+}
+
+.weather-box .oneFavoriteCity{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  color: #FFF;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  max-width: 300px;
+  min-width: 230px;
+  padding: 15px;
+  font-size: 20px;
+  height: 350px;
+}
+
+
 .weather-box .fiveDaysForecast{
   text-align: center;
   display: flex;
@@ -122,6 +178,7 @@ main {
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  
 }
 .weather-box .oneDayForecast {
   color: #FFF;
@@ -133,12 +190,49 @@ main {
 }
 
 @media screen and (max-width: 600px){
-  .weather-box .temp {
+  .weather-box .fiveDaysForecast{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+  .weather-box .oneDayForecast {
+   width: 150px;
+   height: 140px;
+   font-size:12px;
+    max-width: 350px;
+    padding: 10px;
+    margin-top: 20px;
+    margin: 6px;
+  }
+  .weather-box .oneDayForecast img{
+width: auto;
+height: 50px;
+  }
+  .weather-box .weather {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  }
+  .weather-box .temp{
+    font-size: 90px;
+  }
+  .weather-box .tempIcon{
+    height: 90px;
+  }
+  main .singlFavoriteBtn{
+    font-size: 15px;
+    
+  }
+  .weather-box .fiveFavoriteCites{
+    /* flex-direction: column; */
 
-    margin: 30px auto;
-    padding: 15px 25px;
-    font-size: 102px;
-    font-weight: 900;
+  }
+
+  .weather-box .oneFavoriteCity{
+    font-size: 20px;
+    font-weight: 900px;
+    margin: 15px;
+    width: 300px;
   }
 
 }

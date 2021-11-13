@@ -1,16 +1,16 @@
 
 import React from 'react';
-
-import FirstPage from "./components/firsrtPage/FirstPage"
+import PagesRouter from "./PagesRouter"
+// import WeatherPage from "./components/weatherPage/WeatherPage";
 
 
 function App() {
 
   return (
    
-  <React.Fragment>
-<FirstPage/>
-</React.Fragment>
+  <>
+<PagesRouter/>
+</>
    
   );
 }

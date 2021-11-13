@@ -1,7 +1,7 @@
 
 
 
-const apiKey = "um45UACMOk3LIGk4PcZGV2hkjy9GtF9T";
+const apiKey = "EkhRH8zK5AMGaA7d5hS2at00T2igAOwW";
 
 const getWeatherData = async (id) => {
     const cityApi = 'http://dataservice.accuweather.com/currentconditions/v1/';
@@ -18,7 +18,7 @@ export function fetchWeather(dataKey){
 
     return async function(dispatch){
        await getWeatherData(dataKey)
-        .then(data => {console.log(data); return data;})
+        .then(data => { return data;})
         .then(jsonRes => {
           
             dispatch({type: "FETCH_WEATHER", payload:jsonRes});
